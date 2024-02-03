@@ -15,10 +15,6 @@ export default function Home() {
         Did you know that approximately one in ten Instagram accounts is fake? That's around 200 million fake Instagram accounts! InstaGuard can help you determine whether an account is fake or not based on different criteria
 
        </p>
-        {/* <p className={styles.text}>
-  Curious about a user's authenticity? <span className={styles.boldtext}>Discover now!</span>
-        </p> */}
-        {/* <h2 className={styles.title1}>How it works?</h2> */}
         <p className={styles.boldtext}> 
         Unveil the percentage revealing the authenticity. 🕵️‍♀️✨        
         </p>
