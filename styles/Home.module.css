@@ -1,12 +1,29 @@
 .title {
   color: #333;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
+}
 
+.title1 {
+  color: #FF0072;
+  text-align: center;
+  font-size: 1.3rem;
 }
 .text {
   color: #333;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: center;
 }
 
+.text1 {
+  color: #333;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.boldtext {
+  color: #333;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+}
