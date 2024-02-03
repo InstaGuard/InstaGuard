@@ -122,6 +122,24 @@ footer {
 .input-alt:focus + .input-border-alt {
   width: 82%;
 }
+/* button {
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.2em 2em;
+  border: 3px solid linear-gradient(to right,  #f89d89, #f77086,#fe2695, #ce1fba, #a028b7, #a81ad5) ;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: #fe2695;
+  text-decoration: none;
+  transition: 0.3s ease all;
+  z-index: 1;
+} */
+
 button {
   font-size: 18px;
   letter-spacing: 2px;
@@ -130,15 +148,24 @@ button {
   text-align: center;
   font-weight: bold;
   padding: 0.2em 2em;
-  border: 3px solid #FF0072;
+  border: 3px solid black;
   border-radius: 2px;
   position: relative;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
-  color: #FF0072;
+  background: linear-gradient(to right, #fe2695, #f89d89, #a81ad5, #f77086, #ce1fba, #a028b7);
+  color: transparent;
   text-decoration: none;
+  background-clip: text; /* Clip the background to the text */
+  -webkit-background-clip: text; /* For Safari */
   transition: 0.3s ease all;
   z-index: 1;
 }
+
+button:hover,
+button:focus {
+  color: white;
+}
+
 
 button:before {
   transition: 0.5s all ease;
@@ -149,7 +176,7 @@ button:before {
   bottom: 0;
   opacity: 0;
   content: '';
-  background-color: #FF0072;
+  background: linear-gradient(to right,  #f89d89, #f77086,#fe2695, #ce1fba, #a028b7, #a81ad5);
   z-index: -1;
 }
 
