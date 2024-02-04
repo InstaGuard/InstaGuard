@@ -195,8 +195,28 @@ button:active {
   transform: scale(0.9);
 }
 
+.center {
+  text-align: center;
+  width: 100%;
+}
+
 .flex-details {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.flex-result {
+  display: flex;
+  align-items: top;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.gauge {
+  max-width: 80%;
+}
+
+.fullwidth {
+  width: 100%;
 }

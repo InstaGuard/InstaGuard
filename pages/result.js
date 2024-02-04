@@ -9,11 +9,13 @@ export default function Result() {
       <Head>
         <title>InstaGuard Result</title>
       </Head>
-      <div>
+      <div className="center">
         <ResultHeader />
-        <Gauge />
-        <ProfileDetails />
-        <button>Verify Another Profile</button>
+        <div className="flex-result">
+          <Gauge />
+          <ProfileDetails />
+        </div>
+        <button className="fullwidth">Verify Another Profile</button>
       </div>
     </>
   )
