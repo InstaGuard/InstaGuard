@@ -1,10 +1,7 @@
 import Image from 'next/image'
 
-const ProfileDetails = () => {
-  const username = "mock user";
-  const followers = 1000;
-  const follows = 400;
-  const posts = 123;
+const ProfileDetails = (props) => {
+  const { username, followers, follows, posts } = props;
 
     return ( 
       <div>

@@ -1,7 +1,9 @@
 import dynamic from "next/dynamic";
 const GaugeComponent = dynamic(() => import('react-gauge-component'), { ssr: false });
 
-const Gauge = () => {
+const Gauge = (props) => {
+  const { score } = props;
+
     return ( 
       <div className="gauge">
         <h2>Fake-O-Meter</h2>
@@ -25,7 +27,7 @@ const Gauge = () => {
               },
             ]
           }}
-          value={82}
+          value={score}
         />
       </div>
      );
