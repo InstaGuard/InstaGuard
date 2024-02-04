@@ -1,8 +1,36 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import getScrapedData from './algorithm/apify.js';
+import { useState } from 'react';
 
 export default function Home() {
+  const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState('');
+
+  const handleChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handleClick = async () => {
+        // Set loading to true to show the loading div
+        setLoading(true);
+        try {
+          console.log(username);
+          // const scrapedData = await getScrapedData(username);
+          // console.log(scrapedData);
+        } catch (error) {
+          // Handle errors as needed
+          console.error(error);
+        } finally {
+          // Set loading to false after some delay (e.g., 2 seconds)
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
+        }
+
+  };
+
   return (
     <>
       <Head>
@@ -24,11 +52,21 @@ export default function Home() {
             placeholder="Enter Instagram Username"
             required=""
             type="text"
+            value={username}
+            onChange={handleChange}
           />
           <span className="input-border input-border-alt"></span>
-          <button>Verify Profile</button>
+          <button onClick={handleClick}>Verify Profile</button>
         </div>
-        <h6 className={styles.text}>Your safety online is our priority 🔒 </h6>
+        {loading && <div className="typing-indicator">
+          <div className="typing-circle"></div>
+          <div className="typing-circle"></div>
+          <div className="typing-circle"></div>
+          <div className="typing-shadow"></div>
+          <div className="typing-shadow"></div>
+          <div className="typing-shadow"></div>
+        </div>}
+        <h6 className={styles.safetytext}>Your safety online is our priority 🔒 </h6>
       </div>
     </>
   );
