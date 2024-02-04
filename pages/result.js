@@ -2,6 +2,7 @@ import Head from "next/head";
 import ResultHeader from "../comps/ResultHeader";
 import Gauge from "../comps/Gauge";
 import ProfileDetails from "../comps/ProfileDetails";
+import { useRouter } from 'next/router';
 
 export default function Result() {
   const score = 82;
@@ -10,6 +11,12 @@ export default function Result() {
   const followers = 1000;
   const follows = 400;
   const posts = 123;
+
+  const router = useRouter();
+
+  const handleBackToHome = () => {
+    router.push('/');
+  };
 
   return (
     <>
@@ -32,7 +39,9 @@ export default function Result() {
             posts={posts}
           />
         </div>
-        <button className="fullwidth">Verify Another Profile</button>
+        <button className="fullwidth" onClick={handleBackToHome}>
+          Verify Another Profile
+        </button>
       </div>
     </>
   )
