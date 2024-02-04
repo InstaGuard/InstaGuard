@@ -5,6 +5,7 @@ import ProfileDetails from "../comps/ProfileDetails";
 
 export default function Result() {
   const score = 82;
+  const photo = "/InstaGuard_logo.png";
   const username = "mock user";
   const followers = 1000;
   const follows = 400;
@@ -24,6 +25,7 @@ export default function Result() {
             score={score}
           />
           <ProfileDetails 
+            photo={photo}
             username={username}
             followers={followers}
             follows={follows}
