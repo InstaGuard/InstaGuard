@@ -194,3 +194,9 @@ button:hover:before, button:focus:before {
 button:active {
   transform: scale(0.9);
 }
+
+.flex-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
