@@ -24,7 +24,7 @@ export default function Home() {
     }
   };
 
-const handleClick = async () => {
+  const handleClick = async () => {
     // Set loading to true to show the loading div
     setLoading(true);
     try {
@@ -32,7 +32,7 @@ const handleClick = async () => {
       //const scrapedData = await getScrapedData(username);
       //console.log(scrapedData);
 
-      //analyzeData(scrapedData);
+      analyzeData(scrapedData);
     } catch (error) {
       // Handle errors as needed
       console.error(error);
@@ -74,7 +74,8 @@ const handleClick = async () => {
           <span className="input-border input-border-alt"></span>
           <button onClick={handleClick}>Verify Profile</button>
         </div>
-        {loading && <div className="loader">
+        {loading && (
+          <div className="loader">
             <div className="loader-inner">
               <div className="loader-block"></div>
               <div className="loader-block"></div>
@@ -85,8 +86,12 @@ const handleClick = async () => {
               <div className="loader-block"></div>
               <div className="loader-block"></div>
             </div>
-          </div>}
-        <h6 className={styles.safetytext}>Your safety online is our priority 🔒 </h6>
+          </div>
+        )}
+        {error && <h6>{errorText}</h6>}
+        <h6 className={styles.safetytext}>
+          Your safety online is our priority 🔒{" "}
+        </h6>
       </div>
     </>
   );
