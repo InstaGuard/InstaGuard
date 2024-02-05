@@ -22,7 +22,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "pages/api/calc"  ],
   "exclude": [
     "node_modules"
   ]

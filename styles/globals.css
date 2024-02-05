@@ -174,94 +174,116 @@ button:active {
   transform: scale(0.9);
 }
 
-.typing-indicator {
-  width: 100px;
-  height: 50px;
+
+.center {
+  text-align: center;
+  width: 100%;
+}
+
+.flex-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flex-result {
+  display: flex;
+  align-items: top;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.gauge {
+  max-width: 80%;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
   position: relative;
-  z-index: 4;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
-.typing-circle {
-  width: 15px; 
-  height: 15px;
+.loader:before {
+  content: "";
   position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
   border-radius: 50%;
-  background-color: #000;
-  left: 15%;
-  transform-origin: 50%;
-  animation: typing-circle7124 0.5s alternate infinite ease;
 }
 
-
-@keyframes typing-circle7124 {
-  0% {
-    top: 20px;
-    height: 5px;
-    border-radius: 50px 50px 25px 25px;
-    transform: scaleX(1.7);
-  }
-
-  40% {
-    height: 8px;
-    border-radius: 50%;
-    transform: scaleX(1);
-  }
-
-  100% {
-    top: 0%;
-  }
+.loader-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.typing-circle:nth-child(2) {
-  left: 45%;
-  animation-delay: 0.2s;
-}
-
-.typing-circle:nth-child(3) {
-  left: auto;
-  right: 15%;
-  animation-delay: 0.3s;
-}
-
-.typing-shadow {
+.loader-block {
+  display: inline-block;
   width: 10px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: 30px;
-  transform-origin: 50%;
-  z-index: 3;
-  left: 15%;
-  filter: blur(1px);
-  animation: typing-shadow046 0.5s alternate infinite ease;
+  height: 10px;
+  margin: 2px;
+  background-color: #fe2695;
+  box-shadow: 0 0 20px #fff;
+  animation: loader_562 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 }
 
-@keyframes typing-shadow046 {
-  0% {
-    transform: scaleX(1.5);
-  }
-
-  40% {
-    transform: scaleX(1);
-    opacity: 0.7;
-  }
-
-  100% {
-    transform: scaleX(0.2);
-    opacity: 0.4;
-  }
+.loader-block:nth-child(1) {
+  animation-delay: 0.1s;
 }
 
-.typing-shadow:nth-child(4) {
-  left: 45%;
+.loader-block:nth-child(2) {
   animation-delay: 0.2s;
 }
 
-.typing-shadow:nth-child(5) {
-  left: auto;
-  right: 15%;
+.loader-block:nth-child(3) {
   animation-delay: 0.3s;
+}
+
+.loader-block:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.loader-block:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.loader-block:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.loader-block:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+.loader-block:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+@keyframes loader_562 {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+
+  20% {
+    transform: scale(1, 2.5);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
+  }
+
+  40% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
 }
