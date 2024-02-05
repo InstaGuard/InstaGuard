@@ -4,7 +4,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 type ResultData = {
   score: number,
   reasons: object,
-  user_name: string | string[],
   photo: string,
   followers: number,
   follows: number,
@@ -22,7 +21,6 @@ export default function handler(
   res.status(200).json({ 
     score: 82,
     reasons: {},
-    user_name: uname,
     photo: "/InstaGuard_logo.png",
     followers: 1000,
     follows: 400,
