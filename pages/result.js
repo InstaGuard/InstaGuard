@@ -8,7 +8,8 @@ export async function getServerSideProps() {
   // Here we need to implement getting the username from the homepage
   const username = "fakeuser123";
 
-  const res = await fetch('http://localhost:3000/api/calc/' + username);
+  const res = await fetch(`http://localhost:3000/api/calc/${username}`);
+
   const result_data = await res.json();
   return { props: { username, result_data } }
 }
