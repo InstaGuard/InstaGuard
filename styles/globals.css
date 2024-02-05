@@ -44,15 +44,15 @@ nav .logo {
 footer {
   background: #f2f2f2;
   text-align: center;
-  padding: 30px 0;
+  padding: 10px 0;
   color: #777;
   border-top: 1px solid #eaeaea;
-  position: fixed;
+  position: absolute;
   width: 100%;
   bottom: 0;
   margin: 0;
+ left: 50px;
 }
-
 
 .not-found {
   text-align: center;
@@ -172,6 +172,33 @@ button:hover:before, button:focus:before {
 
 button:active {
   transform: scale(0.9);
+}
+
+
+.center {
+  text-align: center;
+  width: 100%;
+}
+
+.flex-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flex-result {
+  display: flex;
+  align-items: top;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.gauge {
+  max-width: 80%;
+}
+
+.fullwidth {
+  width: 100%;
 }
 
 .loader {

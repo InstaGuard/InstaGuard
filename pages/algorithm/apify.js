@@ -10,14 +10,14 @@ const getScrapedData = async (username) => {
   console.log("username" + username);
   const url = `https://www.instagram.com/${username}/`;
   const input = {
-    "directUrls": [
-      url // Use the dynamically generated URL here
+    directUrls: [
+      url, // Use the dynamically generated URL here
     ],
-    "resultsType": "details",
-    "resultsLimit": 200,
-    "addParentData": false,
-    "searchType": "hashtag",
-    "searchLimit": 1
+    resultsType: "details",
+    resultsLimit: 200,
+    addParentData: false,
+    searchType: "hashtag",
+    searchLimit: 1,
   };
   try {
     // Run the Actor and wait for it to finish
@@ -30,11 +30,9 @@ const getScrapedData = async (username) => {
     const resultsJSON = JSON.stringify(items, null, 2); // The '2' parameter is for indentation
     return resultsJSON;
   } catch (error) {
-    console.error('Error:', error.message);
+    console.error("Error:", error.message);
     throw error;
   }
 };
-
-
 
 export default getScrapedData;
