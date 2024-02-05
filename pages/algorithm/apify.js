@@ -1,12 +1,13 @@
 require('dotenv').config();
 const { ApifyClient } = require('apify-client');
-const apifyToken = process.env.Token
+const apifyToken = process.env.TOKEN;
 // Initialize the ApifyClient with API token
 const client = new ApifyClient({
   token: apifyToken,
 });
 
 const getScrapedData = async (username) => {
+  console.log("username" + username);
   const url = `https://www.instagram.com/${username}/`;
   const input = {
     "directUrls": [

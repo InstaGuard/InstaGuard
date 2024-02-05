@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import getScrapedData from './algorithm/apify.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -16,9 +16,8 @@ export default function Home() {
         // Set loading to true to show the loading div
         setLoading(true);
         try {
-          console.log(username);
-          // const scrapedData = await getScrapedData(username);
-          // console.log(scrapedData);
+          const scrapedData = await getScrapedData(username);
+          console.log(scrapedData);
         } catch (error) {
           // Handle errors as needed
           console.error(error);
@@ -57,16 +56,16 @@ export default function Home() {
           <span className="input-border input-border-alt"></span>
           <button onClick={handleClick}>Verify Profile</button>
         </div>
-        {loading && <div class="loader">
-            <div class="loader-inner">
-              <div class="loader-block"></div>
-              <div class="loader-block"></div>
-              <div class="loader-block"></div>
-              <div class="loader-block"></div>
-              <div class="loader-block"></div>
-              <div class="loader-block"></div>
-              <div class="loader-block"></div>
-              <div class="loader-block"></div>
+        {loading && <div className="loader">
+            <div className="loader-inner">
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
             </div>
           </div>}
         <h6 className={styles.safetytext}>Your safety online is our priority 🔒 </h6>
