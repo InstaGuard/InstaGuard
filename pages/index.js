@@ -28,7 +28,6 @@ const handleClick = async () => {
     // Set loading to true to show the loading div
     setLoading(true);
     try {
-      console.log(username);
       //const scrapedData = await getScrapedData(username);
       //console.log(scrapedData);
 

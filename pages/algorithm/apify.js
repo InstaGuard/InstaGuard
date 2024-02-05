@@ -7,7 +7,6 @@ const client = new ApifyClient({
 });
 
 const getScrapedData = async (username) => {
-  console.log("username" + username);
   const url = `https://www.instagram.com/${username}/`;
   const input = {
     directUrls: [
