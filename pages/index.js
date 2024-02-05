@@ -24,26 +24,49 @@ export default function Home() {
     }
   };
 
-const handleClick = async () => {
-    // Set loading to true to show the loading div
-    setLoading(true);
-    try {
-      //const scrapedData = await getScrapedData(username);
-      //console.log(scrapedData);
-
-      //analyzeData(scrapedData);
-    } catch (error) {
-      // Handle errors as needed
-      console.error(error);
-    } finally {
-      // Set loading to false after some delay (e.g., 2 seconds)
-      setTimeout(() => {
-        setLoading(false);
-        setUsername("");
-      }, 3000);
+  const checkIfIsError = (scrapedData) => {
+    if (Array.isArray(scrapedData) && scrapedData.length > 0) {
+      const firstObject = scrapedData[0];
+      console.log(firstObject);
+      if (firstObject.hasOwnProperty("error")) {
+        //throw new Error(firstObject.error);
+        setErrorInJson(true);
+        setErrorText(firstObject.error);
+      }
     }
   };
 
+const handleClick = async () => {
+  setLoading(true);
+  try {
+    const response = await fetch('/api/scrape', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username }),
+    });
+
+    if (!response.ok) {
+      console.error('API request failed:', response.statusText);
+      return;
+    }
+
+    const { success, result, error } = await response.json();
+
+    if (success) {
+      console.log(result); // Handle the result as needed
+      checkIfIsError(result);
+    } else {
+      console.error('API request error:', error);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  } finally {
+    setLoading(false);
+    setUsername('');
+  }
+};
   return (
     <>
       <Head>
@@ -73,7 +96,7 @@ const handleClick = async () => {
           <span className="input-border input-border-alt"></span>
           <button onClick={handleClick}>Verify Profile</button>
         </div>
-        {loading && <div className="loader">
+        {!errorInJson && loading && <div className="loader">
             <div className="loader-inner">
               <div className="loader-block"></div>
               <div className="loader-block"></div>
@@ -85,6 +108,11 @@ const handleClick = async () => {
               <div className="loader-block"></div>
             </div>
           </div>}
+          {errorInJson && (
+          <div className="errorText">
+            <h6>{errorText}</h6>
+          </div>
+        )}
         <h6 className={styles.safetytext}>Your safety online is our priority 🔒 </h6>
       </div>
     </>
