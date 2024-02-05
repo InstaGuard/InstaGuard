@@ -7,20 +7,22 @@ import { useState } from "react";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
-  const [error, setError] = useState(false);
+  const [errorInJson, setErrorInJson] = useState(false);
   const [errorText, setErrorText] = useState("");
 
   const handleChange = (event) => {
     setUsername(event.target.value);
   };
-  const analyzeData = (scrapedData) => {
-    if (!scrapedData || typeof scrapedData !== "object") {
-      throw new Error("Invalid scraped data format");
-    }
-    if (scrapedData.hasOwnProperty("error")) {
-      //throw new Error(scrapedData.error);
-      setError(true);
-      setErrorText(scrapedData.error);
+
+  const checkIfIsError = (scrapedData) => {
+    if (Array.isArray(scrapedData) && scrapedData.length > 0) {
+      const firstObject = scrapedData[0];
+      console.log(firstObject);
+      if (firstObject.hasOwnProperty("error")) {
+        //throw new Error(firstObject.error);
+        setErrorInJson(true);
+        setErrorText(firstObject.error);
+      }
     }
   };
 
@@ -28,11 +30,12 @@ export default function Home() {
     // Set loading to true to show the loading div
     setLoading(true);
     try {
-      console.log(username);
+      //console.log(username);
       //const scrapedData = await getScrapedData(username);
       //console.log(scrapedData);
+      const scrapedData = require("../pages/algorithm/mock-data/usernotexist.json");
 
-      analyzeData(scrapedData);
+      checkIfIsError(scrapedData);
     } catch (error) {
       // Handle errors as needed
       console.error(error);
@@ -40,7 +43,7 @@ export default function Home() {
       // Set loading to false after some delay (e.g., 2 seconds)
       setTimeout(() => {
         setLoading(false);
-        setUsername("");
+        //setUsername("");
       }, 3000);
     }
   };
@@ -74,7 +77,7 @@ export default function Home() {
           <span className="input-border input-border-alt"></span>
           <button onClick={handleClick}>Verify Profile</button>
         </div>
-        {loading && (
+        {!errorInJson && loading && (
           <div className="loader">
             <div className="loader-inner">
               <div className="loader-block"></div>
@@ -88,7 +91,11 @@ export default function Home() {
             </div>
           </div>
         )}
-        {error && <h6>{errorText}</h6>}
+        {errorInJson && (
+          <div className="errorText">
+            <h6>{errorText}</h6>
+          </div>
+        )}
         <h6 className={styles.safetytext}>
           Your safety online is our priority 🔒{" "}
         </h6>
