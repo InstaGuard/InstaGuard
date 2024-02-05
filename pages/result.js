@@ -2,25 +2,22 @@ import Head from "next/head";
 import ResultHeader from "../comps/ResultHeader";
 import Gauge from "../comps/Gauge";
 import ProfileDetails from "../comps/ProfileDetails";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 export async function getServerSideProps() {
   // Here we need to implement getting the username from the homepage
   const username = "fakeuser123";
 
-  // const res = await fetch('http://127.0.0.1:3000/api/calc/' + username);
-  const res = await fetch('http://localhost:3000/api/calc/' + username);
-
+  const res = await fetch("http://localhost:3000/api/calc/" + username);
   const result_data = await res.json();
-
-  return { props: { username, result_data } }
+  return { props: { username, result_data } };
 }
 
 export default function Result({ username, result_data }) {
   const router = useRouter();
 
   const handleBackToHome = () => {
-    router.push('/');
+    router.push("/");
   };
 
   return (
@@ -29,14 +26,10 @@ export default function Result({ username, result_data }) {
         <title>InstaGuard Result</title>
       </Head>
       <div className="center">
-        <ResultHeader 
-          score={result_data["score"]}
-        />
+        <ResultHeader score={result_data["score"]} />
         <div className="flex-result">
-          <Gauge 
-            score={result_data["score"]}
-          />
-          <ProfileDetails 
+          <Gauge score={result_data["score"]} />
+          <ProfileDetails
             photo={result_data["photo"]}
             username={username}
             followers={result_data["followers"]}
@@ -49,5 +42,5 @@ export default function Result({ username, result_data }) {
         </button>
       </div>
     </>
-  )
+  );
 }

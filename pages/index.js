@@ -7,21 +7,11 @@ import { useState } from "react";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
-  const [error, setError] = useState(false);
+  const [errorInJson, setErrorInJson] = useState(false);
   const [errorText, setErrorText] = useState("");
 
   const handleChange = (event) => {
     setUsername(event.target.value);
-  };
-  const analyzeData = (scrapedData) => {
-    if (!scrapedData || typeof scrapedData !== "object") {
-      throw new Error("Invalid scraped data format");
-    }
-    if (scrapedData.hasOwnProperty("error")) {
-      //throw new Error(scrapedData.error);
-      setError(true);
-      setErrorText(scrapedData.error);
-    }
   };
 
   const checkIfIsError = (scrapedData) => {
@@ -35,6 +25,7 @@ export default function Home() {
       }
     }
   };
+
 
 const handleClick = async () => {
   setLoading(true);
@@ -118,3 +109,4 @@ const handleClick = async () => {
     </>
   );
 }
+
