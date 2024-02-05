@@ -26,7 +26,7 @@ export default function Home() {
     }
   };
 
-  const handleClick = async () => {
+const handleClick = async () => {
     // Set loading to true to show the loading div
     setLoading(true);
     try {
