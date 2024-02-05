@@ -13,12 +13,10 @@ export default function Home() {
   const handleChange = (event) => {
     setUsername(event.target.value);
   };
-
   const analyzeData = (scrapedData) => {
     if (!scrapedData || typeof scrapedData !== "object") {
       throw new Error("Invalid scraped data format");
     }
-
     if (scrapedData.hasOwnProperty("error")) {
       //throw new Error(scrapedData.error);
       setError(true);
@@ -76,20 +74,19 @@ const handleClick = async () => {
           <span className="input-border input-border-alt"></span>
           <button onClick={handleClick}>Verify Profile</button>
         </div>
-        {loading && (
-          <div className="typing-indicator">
-            <div className="typing-circle"></div>
-            <div className="typing-circle"></div>
-            <div className="typing-circle"></div>
-            <div className="typing-shadow"></div>
-            <div className="typing-shadow"></div>
-            <div className="typing-shadow"></div>
-          </div>
-        )}
-        {error && <span>{errorText}</span>}
-        <h6 className={styles.safetytext}>
-          Your safety online is our priority 🔒{" "}
-        </h6>
+        {loading && <div className="loader">
+            <div className="loader-inner">
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+              <div className="loader-block"></div>
+            </div>
+          </div>}
+        <h6 className={styles.safetytext}>Your safety online is our priority 🔒 </h6>
       </div>
     </>
   );
