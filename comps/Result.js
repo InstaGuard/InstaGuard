@@ -18,7 +18,7 @@ const Result = ({ data }) => { // Destructuring directly in the function paramet
   const router = useRouter();
 
   const handleBackToHome = () => {
-    router.push("/");
+    router.reload();
   };
 
   return (
@@ -27,7 +27,7 @@ const Result = ({ data }) => { // Destructuring directly in the function paramet
         <div className="flex-result">
           <Gauge score={score} />
           <ProfileDetails
-            // photo={photo}
+            photo={photo}
             username={username}
             followers={followers}
             follows={follows}
