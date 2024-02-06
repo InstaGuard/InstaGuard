@@ -1,7 +1,6 @@
 const config = require('../../next.config');
 const stringEntropy = require('fast-password-entropy');
-
-export default function calculateFakeUserScore(userData) {
+export default async function calculateFakeUserScore(userData) {
   const {
     verifiedAndHighFollowers:verifiedAndHighFollowersWeight,
     followersRatio:followersRatioWeight,
@@ -23,6 +22,7 @@ export default function calculateFakeUserScore(userData) {
     username,
     biography,
     joinedRecently: isJoinedRecently,
+    private : isPrivate,
     profilePicUrl,
     postsCount,
     latestPosts
@@ -89,7 +89,18 @@ if (!followsCount || followersCount / followsCount < followersRatioThreshhold) {
     trueConditions.bioSpecialChar= true;
   }
 //???fix
-  if (!profilePicUrl) {
+const urlExists = await fetch('/api/checkIfHasImg', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ url:profilePicUrl }),
+});
+const DataUrlExists = await urlExists.json();
+console.log(DataUrlExists);
+console.log(DataUrlExists.result);
+  if (DataUrlExists.success && DataUrlExists.result) {
+    console.log("in no img");
     fakeUserScore += noProfilePictureWeight;
     trueConditions.noProfilePicture = true;
   }
@@ -99,14 +110,13 @@ if (!followsCount || followersCount / followsCount < followersRatioThreshhold) {
     trueConditions.postsCount = true;
   }
 //v
-  const lastPostCommentsCount = latestPosts.length > 1 ? latestPosts[0].commentsCount : 0;
-  if (lastPostCommentsCount <= lastPostCommentsMaxThreshhold) {
-    fakeUserScore += lastPostCommentsWeight;
-    trueConditions.lastPostComments = true;
+  if(!isPrivate){
+    const lastPostCommentsCount = postsCount > 1 ? latestPosts[0].commentsCount : 0;
+    if (lastPostCommentsCount <= lastPostCommentsMaxThreshhold ) {
+      fakeUserScore += lastPostCommentsWeight;
+      trueConditions.lastPostComments = true;
+    }
   }
-
-  console.log(fakeUserScore);
-  console.log("conditions " + trueConditions);
   fakeUserScore = Math.max(0, Math.min(100, fakeUserScore));
 
   return { fakeUserScore,
