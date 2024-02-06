@@ -16,18 +16,16 @@ export default function Home() {
 
   const handleChange = (event) => {
     setUsername(event.target.value);
+    setErrorInJson(false);
   };
 
-  const checkIfIsError = (scrapedData) => {
-    if (Array.isArray(scrapedData) && scrapedData.length > 0) {
-      const firstObject = scrapedData[0];
-      console.log(firstObject);
-      if (firstObject.hasOwnProperty("error")) {
-        //throw new Error(firstObject.error);
+  const checkIfUserExist = (scrapedData) => {
+    const resultData = JSON.parse(scrapedData);
+    const firstObject = resultData[0];
+    console.log(firstObject);
+    if (firstObject.hasOwnProperty("error")) {
         setErrorInJson(true);
-        setErrorText(firstObject.error);
-      }
-
+        setErrorText("It seems that the Instagram username you provided does not exist :( Please check the username");
     }
   };
 
@@ -53,7 +51,7 @@ const handleClick = async () => {
 
     if (success) {
       console.log(result); // Handle the result as needed
-      checkIfIsError(result);
+      checkIfUserExist(result);
       if (!errorInJson) {
         const resultData = JSON.parse(result);
         console.log(resultData);
