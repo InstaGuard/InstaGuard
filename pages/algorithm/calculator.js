@@ -59,7 +59,7 @@ if (!followsCount || followersCount / followsCount < followersRatioThreshhold) {
     trueConditions.followsMoreThanThreshold = true;
   }
 
-  if(stringEntropy(username) > avgEntropyThreshold + 10){
+  if(stringEntropy(username) > avgEntropyThreshold + 20){
     fakeUserScore += userNameSusWeight;
     trueConditions.userNameSus = true;
   }

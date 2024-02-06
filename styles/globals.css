@@ -313,3 +313,7 @@ button:active {
   margin: 0 auto;
   margin-top: 20px;
 }
+
+.reasons-ul{
+  align-items: center;
+}
