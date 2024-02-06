@@ -7,7 +7,7 @@ const ProfileDetails = (props) => {
       <div>
         <h2>Profile Details</h2>
         <div className='flex-details'>
-          <Image src={photo} alt="profile pic" width={100} height={100} />
+          <img src={photo} alt="profile pic" width={100} height={100} />
           <div>
             <p><b>Username:</b> {username} </p>
             <p><b>#Followers:</b> {followers} </p>
