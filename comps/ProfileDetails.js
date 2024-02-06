@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 const ProfileDetails = (props) => {
-  const { photo, username, followers, follows, posts } = props;
+  const { photo, username, followers, follows } = props;
 
     return ( 
       <div>
@@ -12,7 +12,6 @@ const ProfileDetails = (props) => {
             <p><b>Username:</b> {username} </p>
             <p><b>#Followers:</b> {followers} </p>
             <p><b>#Follows:</b> {follows} </p>
-            <p><b>#Posts:</b> {posts} </p>
           </div>
         </div>
       </div>
