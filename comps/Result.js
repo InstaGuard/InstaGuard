@@ -4,7 +4,13 @@ import ProfileDetails from "./ProfileDetails";
 import { useRouter } from "next/router";
 
 const Result = (props) => {
-  const { username, result_data } = props;
+  const { score,
+          reasons,
+          photo,
+          followers,
+          follows,
+          username
+        } = props;
   const router = useRouter();
 
   const handleBackToHome = () => {
@@ -13,15 +19,14 @@ const Result = (props) => {
 
   return (
     <div className="center">
-        <ResultHeader score={result_data["score"]} />
+        <ResultHeader score={score} />
         <div className="flex-result">
-          <Gauge score={result_data["score"]} />
+          <Gauge score={score} />
           <ProfileDetails
-            photo={result_data["photo"]}
+            photo={photo}
             username={username}
-            followers={result_data["followers"]}
-            follows={result_data["follows"]}
-            posts={result_data["posts"]}
+            followers={followers}
+            follows={follows}
           />
         </div>
         <button className="fullwidth" onClick={handleBackToHome}>

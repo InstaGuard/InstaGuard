@@ -98,7 +98,13 @@ if (!followsCount || followersCount / followsCount < followersRatioThreshhold) {
 
   fakeUserScore = Math.max(0, Math.min(100, fakeUserScore));
 
-  return { fakeUserScore, trueConditions };
+  return { fakeUserScore,
+           trueConditions, 
+           profilePicUrl,
+           followersCount,
+           followsCount,
+           username
+          };
 }
 
 
