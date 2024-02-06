@@ -8,8 +8,6 @@ const Navbar = () => {
         <Image src="/InstaGuard_logo.png" alt="site logo" width={80} height={90} />
       </div>
       <Link href="/">Home</Link>
-      <Link href="/about">About</Link>
-      <Link href="/ninjas/">Ninja Listing</Link>
     </nav>
   );
 }

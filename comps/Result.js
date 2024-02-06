@@ -12,9 +12,6 @@ const Result = ({ data }) => { // Destructuring directly in the function paramet
       followsCount: follows, // Renaming followsCount to follows
       username // Keeping the username as is
     } = data;
-        console.log(score);
-        console.log(reasons);
-        console.log(followers);
   const router = useRouter();
 
   const handleBackToHome = () => {

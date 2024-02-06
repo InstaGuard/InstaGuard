@@ -1,16 +1,18 @@
 const config = require('../../next.config');
+const stringEntropy = require('fast-password-entropy');
 
 export default function calculateFakeUserScore(userData) {
   const {
     verifiedAndHighFollowers:verifiedAndHighFollowersWeight,
     followersRatio:followersRatioWeight,
     followsMoreThanThreshold:followsMoreThanThresholdWeight,
-    usernameSpecialChar:usernameSpecialCharWeight,
-    serialNumbers:serialNumbersWeight,
+    userNameSus:userNameSusWeight,
     joinedRecently:joinedRecentlyWeight,
+    emptyBio:emptyBioWeight,
     bioLinks:bioLinksWeight,
     bioSpecialChar:bioSpecialCharWeight,
     noProfilePicture:noProfilePictureWeight,
+    postsCount:postsCountWeight,
     lastPostComments:lastPostCommentsWeight
   } = config.weights;
 
@@ -22,6 +24,7 @@ export default function calculateFakeUserScore(userData) {
     biography,
     joinedRecently: isJoinedRecently,
     profilePicUrl,
+    postsCount,
     latestPosts
   } = userData;
 
@@ -32,7 +35,8 @@ export default function calculateFakeUserScore(userData) {
     usernameSpecialChar:usernameSpecialCharThreshold,
     bioLinks:bioLinksThreshold,
     bioSpecialChar:bioSpecialCharThreshold,
-    lastPostCommentsMax:lastPostCommentsMaxThreshhold
+    lastPostCommentsMax:lastPostCommentsMaxThreshhold,
+    avgEntropy:avgEntropyThreshold
   } = config.thresholds;
 
   let fakeUserScore = 0;
@@ -53,22 +57,22 @@ if (!followsCount || followersCount / followsCount < followersRatioThreshhold) {
     fakeUserScore += followsMoreThanThresholdWeight;
     trueConditions.followsMoreThanThreshold = true;
   }
-//v
-  const specialCharCount = username.replace(/[a-zA-Z]/g, '').length;
-  const usernameSpecialCharRatio = specialCharCount / username.length;
-  if (usernameSpecialCharRatio > usernameSpecialCharThreshold) {
-    fakeUserScore += usernameSpecialCharWeight;
-    trueConditions.usernameSpecialChar = true;
+
+  if(stringEntropy(username) > avgEntropyThreshold + 10){
+    fakeUserScore += userNameSusWeight;
+    trueConditions.userNameSus = true;
   }
-//vv
-  if (/(\d)\1{2,}/.test(username) || /123|234|345|456|567|678|789|890/.test(username)) {
-    fakeUserScore += serialNumbersWeight;
-    trueConditions.serialNumbers = true;
-  }
+
 //v
   if (isJoinedRecently) {
     fakeUserScore += joinedRecentlyWeight;
     trueConditions.joinedRecently = true;
+  }
+
+  if(biography === ""){
+    
+    fakeUserScore += emptyBioWeight;
+    trueConditions.emptyBio = true;
   }
 //v
   const bioLinksArray = (biography.match(/https?:\/\/[^\s]+/g) || []).filter(link => link.includes('http'));
@@ -89,6 +93,11 @@ if (!followsCount || followersCount / followsCount < followersRatioThreshhold) {
     fakeUserScore += noProfilePictureWeight;
     trueConditions.noProfilePicture = true;
   }
+
+  if (postsCount < 5) {
+    fakeUserScore += postsCountWeight;
+    trueConditions.postsCount = true;
+  }
 //v
   const lastPostCommentsCount = latestPosts.length > 1 ? latestPosts[0].commentsCount : 0;
   if (lastPostCommentsCount <= lastPostCommentsMaxThreshhold) {
@@ -96,6 +105,8 @@ if (!followsCount || followersCount / followsCount < followersRatioThreshhold) {
     trueConditions.lastPostComments = true;
   }
 
+  console.log(fakeUserScore);
+  console.log("conditions " + trueConditions);
   fakeUserScore = Math.max(0, Math.min(100, fakeUserScore));
 
   return { fakeUserScore,
