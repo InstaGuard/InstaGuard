@@ -2,6 +2,8 @@ import ResultHeader from "./ResultHeader";
 import Gauge from "./Gauge";
 import ProfileDetails from "./ProfileDetails";
 import { useRouter } from "next/router";
+import ReasonsContainer from "./ReasonsContainer";
+import Footer from "./Footer";
 
 const Result = ({ data }) => { // Destructuring directly in the function parameter
     const { 
@@ -30,6 +32,7 @@ const Result = ({ data }) => { // Destructuring directly in the function paramet
             follows={follows}
           />
         </div>
+        <ReasonsContainer reasonsList={reasons} />
         <button className="fullwidth" onClick={handleBackToHome}>
           Verify Another Profile
         </button>

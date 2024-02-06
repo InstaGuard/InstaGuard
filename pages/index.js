@@ -5,6 +5,7 @@ import getScrapedData from "./algorithm/apify.js";
 import calculateFakeUserScore from "./algorithm/calculator.js";;
 import { useState } from "react";
 import Result from "../comps/Result.js";
+import Footer from "../comps/Footer.js";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -118,6 +119,7 @@ const handleClick = async () => {
           </div>
         )}
         <h6 className={styles.safetytext}>Your safety online is our priority 🔒 </h6>
+        <Footer />
       </div>
     </>
   );

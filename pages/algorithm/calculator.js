@@ -23,6 +23,7 @@ export default function calculateFakeUserScore(userData) {
     username,
     biography,
     joinedRecently: isJoinedRecently,
+    private : isPrivate,
     profilePicUrl,
     postsCount,
     latestPosts
@@ -99,14 +100,13 @@ if (!followsCount || followersCount / followsCount < followersRatioThreshhold) {
     trueConditions.postsCount = true;
   }
 //v
-  const lastPostCommentsCount = latestPosts.length > 1 ? latestPosts[0].commentsCount : 0;
-  if (lastPostCommentsCount <= lastPostCommentsMaxThreshhold) {
-    fakeUserScore += lastPostCommentsWeight;
-    trueConditions.lastPostComments = true;
+  if(!isPrivate){
+    const lastPostCommentsCount = postsCount > 1 ? latestPosts[0].commentsCount : 0;
+    if (lastPostCommentsCount <= lastPostCommentsMaxThreshhold ) {
+      fakeUserScore += lastPostCommentsWeight;
+      trueConditions.lastPostComments = true;
+    }
   }
-
-  console.log(fakeUserScore);
-  console.log("conditions " + trueConditions);
   fakeUserScore = Math.max(0, Math.min(100, fakeUserScore));
 
   return { fakeUserScore,
