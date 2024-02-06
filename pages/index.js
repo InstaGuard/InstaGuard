@@ -25,7 +25,6 @@ export default function Home() {
   };
 
 const handleClick = async (username) => {
-  console.log("in handlee click")
   setLoading(true);
 
   try {
@@ -52,6 +51,25 @@ const handleClick = async (username) => {
         console.log(resultData);
         const ansCalculator=calculateFakeUserScore(resultData[0]);
         setAnsCalculator(ansCalculator);
+        const photo_url = ansCalculator["profilePicUrl"];
+        console.log("my url is: " + photo_url);
+
+        // download profile pic
+        const response = await fetch('/api/downloadImg', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ url: photo_url, username: username}),
+        });
+
+        if (!response.ok) {
+          console.error('API request failed:', response.statusText);
+          return;
+        }
+
+        const { success, error } = await response.json();
+
         setHasResult(true);
       }
 
