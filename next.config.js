@@ -1,16 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   "weights": {
-    "verifiedAndHighFollowers": 15,
-    "followersRatio": 10,
-    "followsMoreThanThreshold": 10,
-    "usernameSpecialChar": 10,
-    "serialNumbers": 10,
-    "joinedRecently": 10,
-    "bioLinks": 10,
-    "bioSpecialChar": 10,
-    "noProfilePicture": 5,
-    "lastPostComments": 10
+    "verifiedAndHighFollowers": 10,
+    "followersRatio": 20,
+    "followsMoreThanThreshold": 12,
+    "userNameSus": 28,
+    "joinedRecently": 5,
+    "emptyBio": 4,
+    "bioLinks": 3,
+    "bioSpecialChar": 3,
+    "noProfilePicture": 2,
+    "postsCount": 10,
+    "lastPostComments": 3
   },
   "thresholds": {
     "verifiedAndHighFollowers": 10000,
@@ -19,7 +20,8 @@ const nextConfig = {
     "usernameSpecialChar": 0.4,
     "bioLinks": 3,
     "bioSpecialChar": 0.5,
-    "lastPostCommentsMax": 2
+    "lastPostCommentsMax": 2,
+    "avgEntropy": 60
   }
 }
 
