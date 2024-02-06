@@ -291,7 +291,9 @@ button:active {
 .errorText {
   color: #fe2695;
   text-align: center;
-  margin-top: 20px;
   font-size: 30px;
   margin-right: 50px;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 20px;
 }

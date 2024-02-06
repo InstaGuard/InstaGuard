@@ -2,10 +2,14 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import getScrapedData from "./algorithm/apify.js";
+import calculateFakeUserScore from "./algorithm/calculator.js";;
 import { useState } from "react";
+import Result from "../comps/Result.js";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
+  const [hasResult, setHasResult] = useState(false);
+  const [ansCalculator,setAnsCalculator ] = useState({});
   const [username, setUsername] = useState("");
   const [errorInJson, setErrorInJson] = useState(false);
   const [errorText, setErrorText] = useState("");
@@ -23,12 +27,14 @@ export default function Home() {
         setErrorInJson(true);
         setErrorText(firstObject.error);
       }
+
     }
   };
 
 
 const handleClick = async () => {
   setLoading(true);
+
   try {
     const response = await fetch('/api/scrape', {
       method: 'POST',
@@ -48,6 +54,14 @@ const handleClick = async () => {
     if (success) {
       console.log(result); // Handle the result as needed
       checkIfIsError(result);
+      if (!errorInJson) {
+        const resultData = JSON.parse(result);
+        console.log(resultData);
+        const ansCalculator=calculateFakeUserScore(resultData[0]);
+        setAnsCalculator(ansCalculator);
+        setHasResult(true);
+      }
+
     } else {
       console.error('API request error:', error);
     }
@@ -55,10 +69,11 @@ const handleClick = async () => {
     console.error('Error:', error);
   } finally {
     setLoading(false);
-    setUsername('');
+    //setUsername('');
   }
 };
-  return (
+
+  return hasResult ? <Result data={ansCalculator}/>: (
     <>
       <Head>
         <title>InstaGuard</title>
