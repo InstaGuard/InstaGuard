@@ -7,7 +7,6 @@ const Navbar = () => {
       <div className="logo">
         <Image src="/InstaGuard_logo.png" alt="site logo" width={80} height={90} />
       </div>
-      <Link href="/">Home</Link>
     </nav>
   );
 }

@@ -4,6 +4,7 @@ import getScrapedData from "./algorithm/apify.js";
 import calculateFakeUserScore from "./algorithm/calculator.js";;
 import { useState } from "react";
 import Result from "../comps/Result.js";
+import Footer from "../comps/Footer.js";
 import CheckProfile from "../comps/CheckProfile.js";
 
 export default function Home() {
@@ -74,7 +75,6 @@ const handleClick = async (username) => {
       <CheckProfile loading={loading} 
        handleClick={handleClick} 
        errorInJson={errorInJson}
-
        />
     </>
   );
