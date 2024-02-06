@@ -32,25 +32,26 @@ const convertResultsToReasons = (result) => {
 const ReasonsContainer = (props) => {
   const { reasonsList } = props;
   
-  return ( 
+  return (  
       <div>
           <h2>Reasons for this score</h2>
           <p>Here are the reasons we gave this profile its score:</p>
-          <ul style={{ listStyleType: 'none', padding: 0 }}>
+         
+          <ul className='reasons-ul' style={{ listStyleType: 'none', padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               {Object.entries(reasonsList).map(([reason, value]) => (
                   <ReasonItem key={reason} reason={convertResultsToReasons(reason)} value={value} />
               ))}
-          </ul>
+          </ul>     
       </div>
   );
 }
 
 
 const ReasonItem = ({ reason, value }) => (
-    <li>
-        <span style={{ color: 'red' }}>✗</span>
-        {reason}
-    </li>
+  <li style={{ display: 'flex', alignItems: 'center', marginTop: '5px' }}>
+    <span style={{ color: 'red', marginRight: '5px', alignSelf:'center '}}>✗</span>
+    <span style={{ alignSelf: 'center '}}>{reason}</span>
+  </li>
 );
 
 

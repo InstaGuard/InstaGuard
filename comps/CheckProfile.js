@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
+import Footer from "./Footer";
 
 const CheckProfile = ({loading, handleClick, errorInJson}) => {
   const [username, setUsername] = useState("");
@@ -52,6 +53,7 @@ const CheckProfile = ({loading, handleClick, errorInJson}) => {
           </div>
         )}
         <h6 className={styles.safetytext}>Your safety online is our priority 🔒 </h6>
+        <Footer />
       </div>
   );
 }
