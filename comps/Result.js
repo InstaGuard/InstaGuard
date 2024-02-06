@@ -1,4 +1,3 @@
-import Head from "next/head";
 import ResultHeader from "./ResultHeader";
 import Gauge from "./Gauge";
 import ProfileDetails from "./ProfileDetails";
