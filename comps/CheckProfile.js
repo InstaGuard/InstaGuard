@@ -2,14 +2,13 @@ import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import Footer from "./Footer";
 
-const CheckProfile = ({loading, handleClick, errorInJson}) => {
+const CheckProfile = ({loading, handleClick, errorInJson, errorText}) => {
   const [username, setUsername] = useState("");
 
   const handleChange = (event) => {
     
     setUsername(event.target.value);
   };
-  
 
   return ( 
     <div>

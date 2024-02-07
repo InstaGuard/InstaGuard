@@ -93,6 +93,7 @@ const handleClick = async (username) => {
       <CheckProfile loading={loading} 
        handleClick={handleClick} 
        errorInJson={errorInJson}
+       errorText={errorText}
        />
     </>
   );
