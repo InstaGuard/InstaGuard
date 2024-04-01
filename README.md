@@ -1,16 +1,16 @@
 InstaGuard
 
-InstaGuard is a web application designed to address the growing concern of fake accounts on Instagram, which often lead to scams and catfishing, particularly alarming for parents and users alike.
+-InstaGuard is a web application designed to address the growing concern of fake accounts on Instagram, which often lead to scams and catfishing, particularly alarming for parents and users alike.
 
 How it Works
 
-Utilizing a combination of ReactJS, NodeJS, and NextJS, InstaGuard provides a user-friendly interface for verifying Instagram accounts. Users simply input the username of the account they wish to check and press the "VERIFY" button. InstaGuard then analyzes the account and provides a percentage indicating the likelihood of it being fictitious.
+-Utilizing a combination of ReactJS, NodeJS, and NextJS, InstaGuard provides a user-friendly interface for verifying Instagram accounts. Users simply input the username of the account they wish to check and press the "VERIFY" button. InstaGuard then analyzes the account and provides a percentage indicating the likelihood of it being fictitious.
 
 Key Features
 
-Simple Interface: InstaGuard offers a straightforward process for users to verify Instagram accounts without any hassle.
-Real-Time Analysis: Our application employs advanced algorithms to quickly analyze account data and provide instant results.
-Transparency: InstaGuard aims to provide users with a clear indication of the authenticity of Instagram accounts, helping them make informed decisions while navigating the platform.
+-Simple Interface: InstaGuard offers a straightforward process for users to verify Instagram accounts without any hassle.
+-Real-Time Analysis: Our application employs advanced algorithms to quickly analyze account data and provide instant results.
+-Transparency: InstaGuard aims to provide users with a clear indication of the authenticity of Instagram accounts, helping them make informed decisions while navigating the platform.
 
 <img width="959" alt="1" src="https://github.com/InstaGuard/InstaGuard/assets/111306242/e74c1643-a8b0-4e7a-be75-c27938c6fc18">
 
