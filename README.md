@@ -1,10 +1,10 @@
-InstaGuard
+**<h1 style="font-size: 36px;">InstaGuard</h1>**
 
   InstaGuard is a web application designed to address the growing concern of fake accounts on Instagram, which often lead to scams and catfishing, particularly alarming for    parents and users alike.
 
 How it Works
 
-  Utilizing a combination of ReactJS, NodeJS, and NextJS, InstaGuard provides a user-friendly interface for verifying Instagram accounts. Users simply input the username of    the account they wish to check and press the "VERIFY" button. InstaGuard then analyzes the account and provides a percentage indicating the likelihood of it being         
+  Utilizing a combination of ReactJS, NodeJS, and NextJS, InstaGuard provides a user-friendly interface for verifying Instagram accounts. Users simply input the username of    the account they wish to check and press the "VERIFY PROFILE" button. InstaGuard then analyzes the account and provides a percentage indicating the likelihood of it being         
   fictitious.
 
 Key Features
